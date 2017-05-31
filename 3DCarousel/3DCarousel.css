@@ -1,0 +1,114 @@
+.stage{
+	/*将不参与3d变换的舞台元素（3d变换元素的父元素）作为透视对象*/
+	perspective:5999px; /* 镜头距元素平面的距离 ，没有perspective无法产生3D效果*/
+	-webkit-perspective:5999px;
+	-moz-perspective:5999px;
+}
+
+.carousel-wrapper{ /*不能将包裹多个参与3d变换的子元素，并且自身也参与3d变换的包裹元素作为透视对象，
+	这样可能会造成镜头的忽远忽近，产生预料之外的效果*/
+	
+	/*perspective:5999px;*/ 
+	position: relative;
+
+	/*IE不支持transform-style，所以3d变换IE就可以不用玩了*/
+	/*内嵌元素以3D效果呈现，必须明确指定preserve-3d，默认为flat（子元素在2D平面呈现）*/
+	transform-style: preserve-3d; /* Firefox */
+	-webkit-transform-style: preserve-3d; /* Chrome、Safari 和 Opera */
+
+	/*这里容器的宽度和高度必须指定，不然样式会乱*/
+	width:256px;
+	height: 160px;
+
+	margin: 100px auto;
+
+	/*perspective-origin: 50% 50%;*/ /*可以理解为镜头的垂直投影在元素平面上相对于透视元素的位置
+	默认值就为50% 50%*/
+
+	/*每一次轮播过渡时间为1s*/
+	transition: 1s transform;
+}
+
+.carousel-wrapper img{
+	position: absolute;
+
+	/*默认就为visible，决定旋转背面是否可见*/
+	backface-visibility:visible; /*Internet Explorer 10+ 和 Firefox*/
+	-webkit-backface-visibility:visible;	/*Opera 15+ / Chrome 和 Safari */
+	-moz-backface-visibility:visible; 	/* Firefox */
+	-ms-backface-visibility:visible; 	/* Internet Explorer */
+
+	cursor: pointer;
+}
+
+.carousel-wrapper img:nth-child(1){ /*CSS3的transform属性要注意兼容性讨论*/
+	transform:rotateY(0deg) translateZ(420px); /*IE 10、Firefox、Opera*/
+	-ms-transform:rotateY(0deg) translateZ(420px); 	/* IE 9 */
+	-moz-transform:rotateY(0deg) translateZ(420px); 	/* Firefox */
+	-webkit-transform:rotateY(0deg) translateZ(420px); /* Safari 和 Chrome */
+	-o-transform:rotateY(0deg) translateZ(420px); 	/* Opera */
+}
+
+.carousel-wrapper img:nth-child(2){
+	transform:rotateY(40deg) translateZ(420px); /*朝旋转后的正前方移动420px，拉开图片的空间*/
+	-ms-transform:rotateY(40deg) translateZ(420px); 	
+	-moz-transform:rotateY(40deg) translateZ(420px); 	
+	-webkit-transform:rotateY(40deg) translateZ(420px); 
+	-o-transform:rotateY(40deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(3){
+	transform:rotateY(80deg) translateZ(420px);
+	-ms-transform:rotateY(80deg) translateZ(420px); 	
+	-moz-transform:rotateY(80deg) translateZ(420px); 	
+	-webkit-transform:rotateY(80deg) translateZ(420px); 
+	-o-transform:rotateY(80deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(4){
+	transform:rotateY(120deg) translateZ(420px);
+	-ms-transform:rotateY(120deg) translateZ(420px); 	
+	-moz-transform:rotateY(120deg) translateZ(420px); 	
+	-webkit-transform:rotateY(120deg) translateZ(420px); 
+	-o-transform:rotateY(120deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(5){
+	transform:rotateY(160deg) translateZ(420px);
+	-ms-transform:rotateY(160deg) translateZ(420px); 	
+	-moz-transform:rotateY(160deg) translateZ(420px); 	
+	-webkit-transform:rotateY(160deg) translateZ(420px); 
+	-o-transform:rotateY(160deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(6){
+	transform:rotateY(200deg) translateZ(420px);
+	-ms-transform:rotateY(200deg) translateZ(420px); 	
+	-moz-transform:rotateY(200deg) translateZ(420px); 	
+	-webkit-transform:rotateY(200deg) translateZ(420px); 
+	-o-transform:rotateY(200deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(7){
+	transform:rotateY(240deg) translateZ(420px);
+	-ms-transform:rotateY(240deg) translateZ(420px); 	
+	-moz-transform:rotateY(240deg) translateZ(420px); 	
+	-webkit-transform:rotateY(240deg) translateZ(420px); 
+	-o-transform:rotateY(240deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(8){
+	transform:rotateY(280deg) translateZ(420px);
+	-ms-transform:rotateY(280deg) translateZ(420px); 	
+	-moz-transform:rotateY(280deg) translateZ(420px); 	
+	-webkit-transform:rotateY(280deg) translateZ(420px); 
+	-o-transform:rotateY(280deg) translateZ(420px); 
+}
+
+.carousel-wrapper img:nth-child(9){
+	transform:rotateY(320deg) translateZ(420px);
+	-ms-transform:rotateY(320deg) translateZ(420px); 	
+	-moz-transform:rotateY(320deg) translateZ(420px); 	
+	-webkit-transform:rotateY(320deg) translateZ(420px); 
+	-o-transform:rotateY(320deg) translateZ(420px); 
+}

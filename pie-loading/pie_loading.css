@@ -1,0 +1,94 @@
+html{
+	height: 100%;
+}
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.pie-loading{ 
+	display: inline-block;
+	position: absolute;
+	/* 让loading动画在屏幕中间 */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.pie-loading-outer-ring{ 
+	width: 100px;
+	height: 100px;
+	border:5px solid #FCA1A1;
+	border-radius: 100px;
+	border-top-color: transparent;
+	position: relative;
+	animation: 1s clockwise linear infinite;
+}
+
+.pie-loading-first-semicircle{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border: 35px solid;
+	border-color: transparent transparent #FC4545 #FC4545;
+	border-radius: 70px;
+	z-index: 2;
+	animation: 2s inner-clockwise-first linear infinite;
+}
+ 
+.pie-loading-second-semicircle{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border: 35px solid;
+	border-color: #FCA1A1 #FCA1A1 transparent transparent;
+	border-radius: 70px;
+	z-index: 1;
+	animation: 2s inner-clockwise-second linear infinite ;
+} 
+
+.pie-loading-background{
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border: 35px solid;
+	border-color: #FCA1A1 #FCA1A1 #FC4545 #FC4545;
+	border-radius: 70px;
+	z-index: 0;
+}
+
+
+@keyframes clockwise{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(360deg);}
+}
+/*z-index在动画中的变化是一蹴而就的，不会有中间值的过渡，而且是在动画过渡时一蹴而就的，这种跳跃发生在动画起点和终点之间某一时刻*/
+@keyframes inner-clockwise-first{
+	0%{ transform:translate(-50%,-50%) rotate(0deg); } 
+	25%{ transform:translate(-50%,-50%) rotate(180deg); }
+	49.9%{ transform:translate(-50%,-50%) rotate(180deg); z-index: 2;}
+	50%{ transform:translate(-50%,-50%) rotate(180deg); z-index: 1; }
+	75%{ transform:translate(-50%,-50%) rotate(360deg); z-index: 1; }
+	99.9%{ transform:translate(-50%,-50%) rotate(360deg); z-index: 1; }
+	100%{ transform:translate(-50%,-50%) rotate(360deg); z-index: 2; }
+}
+
+@keyframes inner-clockwise-second{
+	0%{ transform:translate(-50%,-50%) rotate(0deg); }
+	25%{ transform:translate(-50%,-50%) rotate(0deg); } /*相邻一致的动画效果也要照抄过来，不能省略，不然会有问题*/
+	49.9%{ transform:translate(-50%,-50%) rotate(180deg); z-index: 1;}
+	50%{ transform:translate(-50%,-50%) rotate(180deg); z-index: 2;}
+	75%{ transform:translate(-50%,-50%) rotate(180deg); z-index: 2;}
+	99.9%{ transform:translate(-50%,-50%) rotate(360deg); z-index: 2;}
+	100%{ transform:translate(-50%,-50%) rotate(360deg); z-index: 1; }
+}

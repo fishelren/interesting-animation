@@ -1,0 +1,121 @@
+body{
+	margin:0;
+	padding:0;
+	font-family:"Microsoft Yahei", sans-serif;
+}
+
+.wrapper{
+	width:525px;
+	height:487px;
+
+	display: -webkit-flex;
+	display: flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	position: relative;
+}
+
+.wrapper img{
+	position:absolute;
+	top:0;
+	left:0;
+	transition: 0.5s linear;
+}
+
+.wrapper:hover img{
+	-webkit-filter:blur(4px); /*高斯模糊*/
+}
+
+.wrapper .content{
+	font-size:3rem;
+	font-weight: bold;
+	padding:3rem;
+	display: inline-block;
+	position:relative;
+	z-index: 100;
+}
+
+.wrapper .content::before{
+	content:"";
+	position: absolute;
+	top:0;
+	left:50%;
+	transform:translateX(-50%);
+	visibility:hidden;
+	width:5%;
+	height:100%;
+	border-top:5px solid #fff;
+	border-bottom:5px solid #fff;
+	transition: 1s width ease-out;
+	z-index: -1;
+	box-sizing: border-box;
+
+}
+
+.wrapper:hover .content::before{
+	width:100%;
+	visibility:visible;
+}
+
+.wrapper .content::after{
+	content:"";
+	position: absolute;
+	top:50%;
+	left:0;
+	transform:translateY(-50%);
+	visibility: hidden;
+	width:100%;
+	height:5%;
+	border-left:5px solid #fff;
+	border-right:5px solid #fff;
+	transition: 1s height linear;
+	z-index: -1;
+	box-sizing: border-box;
+}
+
+.wrapper:hover .content::after{
+	height:100%;
+	visibility: visible;
+}
+
+.content-interact{
+	margin:1rem auto;
+	text-align: center;
+}
+
+.wrapper .text-mask{
+	-webkit-text-fill-color:transparent; 
+	background-image:-webkit-linear-gradient(left,#F66464,#21EB8F 25%,#F66464 50%,#21EB8F 75%,#F66464);/*背景用渐变色表示*/
+	-webkit-background-clip: text;/*仅在文字的下方渲染背景*/
+	background-size:200% 100%;/*背景图像的宽度为父元素宽度的两倍，这样才有渐变的空间*/
+	animation: 2s text-bg-clr-change infinite;
+	opacity: 0;
+	transition: 1s opacity;
+}
+
+.wrapper:hover .text-mask{
+	opacity: 1;
+}
+
+@keyframes text-bg-clr-change{
+	0%{ background-position: 0 0; } /*这里没有逗号*/
+	100%{ background-position: -100% 0; }
+}
+
+.say-support{
+	display: inline-block;
+	font-size: 1.5rem;
+	padding:1rem;
+	border:6px dotted #FFF200;
+	border-radius: 10px;
+	cursor: pointer;
+	z-index: 101;
+}
+
+.say-support:hover{
+	border-radius: 30px;
+}
+
+
+
